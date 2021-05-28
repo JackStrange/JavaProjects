@@ -83,6 +83,11 @@ public class MathNat{
 		else return S(S(dbl(P(n))));
 	}
 
+	public static MathNat power(MathNat base, MathNat pow){
+		if(pow == null) return S(null);
+		else return prod(base,power(base,P(pow)));
+	}
+
 	public static void main(String[] args){
 		String num1 = "4";
 		String num2 = "13";
@@ -104,5 +109,7 @@ public class MathNat{
 		System.out.println(num1 + "! = " + toString(factorial(nat1)) + " = " + realValS(factorial(nat1)));
 		System.out.println(num1 + "*2 = " + toString(dbl(nat1)) + " = " + realValS(dbl(nat1)));
 		System.out.println(num2 + "*2 = " + toString(dbl(nat2)) + " = " + realValS(dbl(nat2)));
+		System.out.println(num1 + "^2 = " + toString(power(nat1,S(S(null)))) + " = " + realValS(power(nat1,S(S(null)))));
+		System.out.println(num2 + "^2 = " + toString(power(nat2,S(S(null)))) + " = " + realValS(power(nat2,S(S(null)))));
 	}
 }
