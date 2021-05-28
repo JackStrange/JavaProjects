@@ -46,13 +46,25 @@ public class MathTree{
 		}
 	}
 
+	public static int height(MathTree t){
+		if(t == null) return 0;
+		else{
+			int lh = height(t.left);
+			int rh = height(t.right);
+			if(lh > rh){
+				return 1 + lh;
+			}else{
+				return 1 + rh;
+			}
+		}
+	}
+
 	public static void main(String[] args){
 		MathTree tree = init(3,init(6),init(5,init(4),init(8,init(),init(7))));
 		MathTree treec = init(3,init(6),init(5,init(4),init(8,init(),init(7))));
 		MathTree tree2 = init(4,init(6),init(5,init(7),init(8,init(),init(7))));
 		MathTree tree3 = init(4,init(6),init(5,init(7),init(8,init(9,init(3),init()),init(7))));
-		System.out.println(toString(tree));
-		System.out.println();
+		System.out.println("Testing Trees\n");
 		System.out.println("Equal to itself: " + Boolean.toString(equal(tree,tree)));
 		System.out.println("Equal to another instance of itself: " + Boolean.toString(equal(tree,treec)));
 		System.out.println("Equal to not itself but same shape: " + Boolean.toString(equal(tree,tree2)));
@@ -62,5 +74,9 @@ public class MathTree{
 		System.out.println("Same shape as another instance of itself: " + Boolean.toString(sameShape(tree,treec)));
 		System.out.println("Same shape as not itself but same shape: " + Boolean.toString(sameShape(tree,tree2)));
 		System.out.println("Same shape as not itself and different shape: " + Boolean.toString(sameShape(tree,tree3)));
+		System.out.println();
+		System.out.println(toString(tree));
+		System.out.println();
+		System.out.println("Height: " + Integer.toString(height(tree)));
 	}
 }
