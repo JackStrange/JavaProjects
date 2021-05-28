@@ -60,8 +60,8 @@ public class MathList{
 
 	public static void main(String[] args){
 		ArrayList<Integer> startArray = new ArrayList<Integer>();
-		for (int i = 0; i<10; i++) {
-			startArray.add(i*i + 2*i + 5);
+		for (int i = 0; i<3; i++) {
+			startArray.add((int)(Math.pow(i+1,2)));
 		}
 		MathList list = init(startArray);
 		System.out.println(toString(list));
