@@ -50,6 +50,14 @@ public class MathList{
 		}
 	}
 
+	public static int phicode(MathList l){
+		if(l == null){
+			return 0;
+		}else{
+			return (int)(Math.pow(2,l.value)) * (2 * phicode(l.next) + 1) - 1;
+		}
+	}
+
 	public static void main(String[] args){
 		ArrayList<Integer> startArray = new ArrayList<Integer>();
 		for (int i = 0; i<10; i++) {
@@ -60,5 +68,6 @@ public class MathList{
 		System.out.println("Sum: " + Integer.toString(sum(list)));
 		System.out.println("Length: " + Integer.toString(len(list)));
 		System.out.println("Concat with itself: " + toString(concat(list,list)));
+		System.out.println("Phi-code: " + Integer.toString(phicode(list)));
 	}
 }
