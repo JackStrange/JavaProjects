@@ -9,6 +9,11 @@ public class MathNat{
 		return new MathNat(n);
 	}
 
+	public static MathNat P(MathNat n){
+		if(n == null) return null;
+		else return n.next;
+	}
+
 	public static MathNat init(int n){
 		if(n == 0) return null;
 		else return S(init(n-1));
@@ -29,12 +34,18 @@ public class MathNat{
 		else return S(plus(n1,n2.next));
 	}
 
+	public static MathNat prod(MathNat n1, MathNat n2){
+		if(n2 == null) return null;
+		else return plus(prod(n1,n2.next),n1);
+	}
+
 	public static void main(String[] args){
 		MathNat nat4 = init(4);
 		MathNat nat6 = init(6);
 		System.out.println("4 = " + toString(nat4) + " = " + Integer.toString(realVal(nat4)));
 		System.out.println("6 = " + toString(nat6) + " = " + Integer.toString(realVal(nat6)));
 		System.out.println();
-		System.out.println("Plus 4 & 6: " + toString(plus(nat4,nat6)) + " = " + Integer.toString(realVal(plus(nat4,nat6))));
+		System.out.println("Plus: " + toString(plus(nat4,nat6)) + " = " + Integer.toString(realVal(plus(nat4,nat6))));
+		System.out.println("Prod: " + toString(prod(nat4,nat6)) + " = " + Integer.toString(realVal(prod(nat4,nat6))));
 	}
 }
