@@ -51,23 +51,35 @@ public class MathList{
 	}
 
 	public static int phicode(MathList l){
+		// phi(n,m) =/= 0 so the empty list can have a phicode of 0
 		if(l == null){
 			return 0;
 		}else{
+			// 2^n(2m + 1) - 1
 			return (int)(Math.pow(2,l.value)) * (2 * phicode(l.next) + 1) - 1;
+		}
+	}
+
+	public static MathList rev(MathList l){
+		if(l == null){
+			return null;
+		}else{
+			return concat(rev(l.next),new MathList(l.value,null));
 		}
 	}
 
 	public static void main(String[] args){
 		ArrayList<Integer> startArray = new ArrayList<Integer>();
-		for (int i = 0; i<3; i++) {
-			startArray.add((int)(Math.pow(i+1,2)));
+		for (int i = 0; i<5; i++) {
+			startArray.add(i);
 		}
 		MathList list = init(startArray);
 		System.out.println(toString(list));
 		System.out.println("Sum: " + Integer.toString(sum(list)));
 		System.out.println("Length: " + Integer.toString(len(list)));
 		System.out.println("Concat with itself: " + toString(concat(list,list)));
+		System.out.println(toString(list));
 		System.out.println("Phi-code: " + Integer.toString(phicode(list)));
+		System.out.println("Reversed: " + toString(rev(list)));
 	}
 }
