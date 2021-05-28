@@ -68,6 +68,14 @@ public class MathList{
 		}
 	}
 
+	public static boolean equal(MathList l1, MathList l2){
+		if(l1 == null || l2 == null){
+			return(l2 == l1);
+		}else{
+			return (l1.value == l2.value && equal(l1.next,l2.next));
+		}
+	}
+
 	public static void main(String[] args){
 		ArrayList<Integer> startArray = new ArrayList<Integer>();
 		for (int i = 0; i<5; i++) {

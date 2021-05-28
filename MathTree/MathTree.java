@@ -30,6 +30,14 @@ public class MathTree{
 		}
 	}
 
+	public static boolean equal(MathTree t1, MathTree t2){
+		if(t1 == null || t2 == null){
+			return t1 == t2;
+		}else{
+			return t1.value == t2.value && equal(t1.left,t2.left) && equal(t1.right,t2.right);
+		}
+	}
+
 	public static void main(String[] args){
 		MathTree tree = init(3,init(6),init(5,init(4),init(8,init(),init(7))));
 		System.out.println(toString(tree));
