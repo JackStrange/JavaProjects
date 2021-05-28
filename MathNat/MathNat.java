@@ -77,6 +77,12 @@ public class MathNat{
 		else return prod(n,factorial(P(n)));
 	}
 
+	public static MathNat dbl(MathNat n){
+		if(n == null) return null;
+		if(P(n) == null) return S(n);
+		else return S(S(dbl(P(n))));
+	}
+
 	public static void main(String[] args){
 		String num1 = "4";
 		String num2 = "13";
@@ -96,5 +102,7 @@ public class MathNat{
 		System.out.println(num2 + "/" + num1 + " = " + toString(div(nat2,nat1)) + " = " + realValS(div(nat2,nat1)));
 		System.out.println(num1 + "/" + num2 + " = " + toString(div(nat1,nat2)) + " = " + realValS(div(nat1,nat2)));
 		System.out.println(num1 + "! = " + toString(factorial(nat1)) + " = " + realValS(factorial(nat1)));
+		System.out.println(num1 + "*2 = " + toString(dbl(nat1)) + " = " + realValS(dbl(nat1)));
+		System.out.println(num2 + "*2 = " + toString(dbl(nat2)) + " = " + realValS(dbl(nat2)));
 	}
 }
