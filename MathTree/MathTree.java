@@ -59,6 +59,20 @@ public class MathTree{
 		}
 	}
 
+	public static int nodes(MathTree t){
+		if(t == null) return 0;
+		else{
+			return 1 + nodes(t.left) + nodes(t.right);
+		}
+	}
+
+	public static int sum(MathTree t){
+		if(t == null) return 0;
+		else{
+			return t.value + sum(t.left) + sum(t.right);
+		}
+	}
+
 	public static void main(String[] args){
 		MathTree tree = init(3,init(6),init(5,init(4),init(8,init(),init(7))));
 		MathTree treec = init(3,init(6),init(5,init(4),init(8,init(),init(7))));
@@ -78,5 +92,7 @@ public class MathTree{
 		System.out.println(toString(tree));
 		System.out.println();
 		System.out.println("Height: " + Integer.toString(height(tree)));
+		System.out.println("Nodes: " + Integer.toString(nodes(tree)));
+		System.out.println("Sum: " + Integer.toString(sum(tree)));
 	}
 }
