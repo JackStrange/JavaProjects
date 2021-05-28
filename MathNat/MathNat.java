@@ -44,15 +44,46 @@ public class MathNat{
 		else return P(sub(n1,P(n2)));
 	}
 
+	public static boolean equal(MathNat n1, MathNat n2){
+		if(n2 == null || n1 == null) return n1 == n2;
+		else return equal(P(n1),P(n2));
+	}
+
+	public static MathNat mod(MathNat n1, MathNat n2){
+		if(n1 == null) return null;
+		else{
+			MathNat nextMod = S(mod(P(n1),n2));
+			if(equal(n2,nextMod)) return null;
+			else return nextMod;
+		}
+	}
+
+	public static MathNat div(MathNat n1, MathNat n2){
+		if(n1 == null) return null;
+		else{
+			MathNat nextDiv = div(P(n1),n2);
+			if(equal(null,mod(n1,n2))) return S(nextDiv);
+			else return nextDiv;
+		}
+	}
+
 	public static void main(String[] args){
-		MathNat nat4 = init(4);
-		MathNat nat6 = init(6);
-		System.out.println("4 = " + toString(nat4) + " = " + Integer.toString(realVal(nat4)));
-		System.out.println("6 = " + toString(nat6) + " = " + Integer.toString(realVal(nat6)));
+		String num1 = "4";
+		String num2 = "13";
+		MathNat nat1 = init(4);
+		MathNat nat2 = init(13);
+		System.out.println(num1 + " = " + toString(nat1) + " = " + Integer.toString(realVal(nat1)));
+		System.out.println(num2 + " = " + toString(nat2) + " = " + Integer.toString(realVal(nat2)));
 		System.out.println();
-		System.out.println("4+6 = " + toString(plus(nat4,nat6)) + " = " + Integer.toString(realVal(plus(nat4,nat6))));
-		System.out.println("4*6 = " + toString(prod(nat4,nat6)) + " = " + Integer.toString(realVal(prod(nat4,nat6))));
-		System.out.println("6-4 = " + toString(sub(nat6,nat4)) + " = " + Integer.toString(realVal(sub(nat6,nat4))));
-		System.out.println("4-6 = " + toString(sub(nat4,nat6)) + " = " + Integer.toString(realVal(sub(nat4,nat6))));
+		System.out.println(num1 + "==" + num2 + " = " + Boolean.toString(equal(nat1,nat2)));
+		System.out.println(num1 + "==" + num1 + " = " + Boolean.toString(equal(nat1,nat1)));
+		System.out.println(num1 + "+" + num2 + " = " + toString(plus(nat1,nat2)) + " = " + Integer.toString(realVal(plus(nat1,nat2))));
+		System.out.println(num1 + "*" + num2 + " = " + toString(prod(nat1,nat2)) + " = " + Integer.toString(realVal(prod(nat1,nat2))));
+		System.out.println(num2 + "-" + num1 + " = " + toString(sub(nat2,nat1)) + " = " + Integer.toString(realVal(sub(nat2,nat1))));
+		System.out.println(num1 + "-" + num2 + " = " + toString(sub(nat1,nat2)) + " = " + Integer.toString(realVal(sub(nat1,nat2))));
+		System.out.println(num2 + "%" + num1 + " = " + toString(mod(nat2,nat1)) + " = " + Integer.toString(realVal(mod(nat2,nat1))));
+		System.out.println(num1 + "%" + num2 + " = " + toString(mod(nat1,nat2)) + " = " + Integer.toString(realVal(mod(nat1,nat2))));
+		System.out.println(num2 + "/" + num1 + " = " + toString(div(nat2,nat1)) + " = " + Integer.toString(realVal(div(nat2,nat1))));
+		System.out.println(num1 + "/" + num2 + " = " + toString(div(nat1,nat2)) + " = " + Integer.toString(realVal(div(nat1,nat2))));
 	}
 }
