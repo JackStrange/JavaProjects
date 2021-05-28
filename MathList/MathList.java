@@ -42,6 +42,14 @@ public class MathList{
 		}
 	}
 
+	public static MathList concat(MathList l1, MathList l2){
+		if(l1 == null){
+			return l2;
+		}else{
+			return new MathList(l1.value,concat(l1.next,l2));
+		}
+	}
+
 	public static void main(String[] args){
 		ArrayList<Integer> startArray = new ArrayList<Integer>();
 		for (int i = 0; i<10; i++) {
@@ -51,5 +59,6 @@ public class MathList{
 		System.out.println(toString(list));
 		System.out.println("Sum: " + Integer.toString(sum(list)));
 		System.out.println("Length: " + Integer.toString(len(list)));
+		System.out.println("Concat with itself: " + toString(concat(list,list)));
 	}
 }
