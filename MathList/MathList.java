@@ -56,7 +56,7 @@ public class MathList{
 			return 0;
 		}else{
 			// 2^n(2m + 1) - 1
-			return (int)(Math.pow(2,l.value)) * (2 * phicode(l.next) + 1) - 1;
+			return (int)(Math.pow(2,l.value)) * (2 * phicode(l.next) + 1);
 		}
 	}
 
