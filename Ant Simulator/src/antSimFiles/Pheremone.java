@@ -14,6 +14,13 @@ public class Pheremone {
         this.strength = lifespan;
     }
 
+    public Pheremone(Type type, Vector pos, Vector dir, double strength) {
+        this.type = type;
+        this.pos = pos;
+        this.dir = dir;
+        this.strength = strength;
+    }
+
     public void update(){
         strength--;
     }
