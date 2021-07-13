@@ -8,6 +8,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class Main extends Application {
 
     @Override
@@ -22,7 +24,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public void drawAnts(){
+    public void drawAnts(List<Ant> ants){
 
     }
 
