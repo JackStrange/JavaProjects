@@ -13,4 +13,12 @@ public class Vector {
         this.x = x;
         this.y = y;
     }
+
+    public Vector mult(double multiplier){
+        return new Vector(this.x*multiplier,this.y*multiplier);
+    }
+
+    public Vector add(Vector adder){
+        return new Vector(this.x + adder.x,this.y + adder.y);
+    }
 }
