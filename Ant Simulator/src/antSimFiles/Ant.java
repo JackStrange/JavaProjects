@@ -54,6 +54,10 @@ public class Ant {
             pos.y = 0;
             dir.y = -dir.y;
         }
+
+        if(rn.nextDouble() < 0.25){
+            Main.pheremones.add(new Pheremone(Pheremone.Type.TOHOME,this.pos,this.dir));
+        }
     }
 
     public Vector getPos(){
