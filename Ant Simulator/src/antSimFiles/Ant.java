@@ -6,6 +6,7 @@ public class Ant {
     private final double speed = 3;
     private final double turningAngle = 15;
     private Vector pos;
+
     private Vector dir;
     private boolean food;
 
@@ -37,5 +38,29 @@ public class Ant {
         double newAngle = Math.atan2(this.dir.x,this.dir.y) + adjustAngle;
         dir = new Vector(Math.sin(newAngle),Math.cos(newAngle));
         pos = pos.add(dir.mult(speed));
+        if(pos.x < 0){
+            pos.x = 0;
+            dir.x = -dir.x;
+        }
+        if(pos.x > 1000){
+            pos.x = 1000;
+            dir.x = -dir.x;
+        }
+        if(pos.y > 1000){
+            pos.y = 1000;
+            dir.y = -dir.y;
+        }
+        if(pos.y < 0){
+            pos.y = 0;
+            dir.y = -dir.y;
+        }
+    }
+
+    public Vector getPos(){
+        return this.pos;
+    }
+
+    public Vector getDir(){
+        return this.dir;
     }
 }
